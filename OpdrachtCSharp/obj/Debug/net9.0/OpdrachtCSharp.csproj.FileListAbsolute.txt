@@ -1,0 +1,15 @@
+C:\Users\flori\RiderProjects\OpdrachtCSharp\OpdrachtCSharp\bin\Debug\net9.0\OpdrachtCSharp.exe
+C:\Users\flori\RiderProjects\OpdrachtCSharp\OpdrachtCSharp\bin\Debug\net9.0\OpdrachtCSharp.deps.json
+C:\Users\flori\RiderProjects\OpdrachtCSharp\OpdrachtCSharp\bin\Debug\net9.0\OpdrachtCSharp.runtimeconfig.json
+C:\Users\flori\RiderProjects\OpdrachtCSharp\OpdrachtCSharp\bin\Debug\net9.0\OpdrachtCSharp.dll
+C:\Users\flori\RiderProjects\OpdrachtCSharp\OpdrachtCSharp\bin\Debug\net9.0\OpdrachtCSharp.pdb
+C:\Users\flori\RiderProjects\OpdrachtCSharp\OpdrachtCSharp\obj\Debug\net9.0\OpdrachtCSharp.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\flori\RiderProjects\OpdrachtCSharp\OpdrachtCSharp\obj\Debug\net9.0\OpdrachtCSharp.AssemblyInfoInputs.cache
+C:\Users\flori\RiderProjects\OpdrachtCSharp\OpdrachtCSharp\obj\Debug\net9.0\OpdrachtCSharp.AssemblyInfo.cs
+C:\Users\flori\RiderProjects\OpdrachtCSharp\OpdrachtCSharp\obj\Debug\net9.0\OpdrachtCSharp.csproj.CoreCompileInputs.cache
+C:\Users\flori\RiderProjects\OpdrachtCSharp\OpdrachtCSharp\obj\Debug\net9.0\OpdrachtCSharp.dll
+C:\Users\flori\RiderProjects\OpdrachtCSharp\OpdrachtCSharp\obj\Debug\net9.0\refint\OpdrachtCSharp.dll
+C:\Users\flori\RiderProjects\OpdrachtCSharp\OpdrachtCSharp\obj\Debug\net9.0\OpdrachtCSharp.pdb
+C:\Users\flori\RiderProjects\OpdrachtCSharp\OpdrachtCSharp\obj\Debug\net9.0\OpdrachtCSharp.genruntimeconfig.cache
+C:\Users\flori\RiderProjects\OpdrachtCSharp\OpdrachtCSharp\obj\Debug\net9.0\ref\OpdrachtCSharp.dll
+C:\Users\flori\RiderProjects\OpdrachtCSharp\OpdrachtCSharp\obj\Debug\net9.0\OpdrachtCSharp.sourcelink.json
