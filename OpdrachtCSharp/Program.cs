@@ -47,12 +47,12 @@ int vraagAantalCodes() {
 void verwerkCodes() {
     for (int i = 0; i < hoeveel; i++)
     {
-        char identificatie = (char)random.Next(65, 71); // A tot F
-        char productNummer = (char)random.Next(49, 57); // 1 tot 9
-        char kwaliteit = (char)random.Next(48, 50); // 0 of 1
+        char identificatie = (char)random.Next('A','G'); // A tot F
+        int productNummer = random.Next(1, 10); // 1 tot 9
+        int kwaliteit = random.Next(0, 2); // 0 of 1
 
         int kolom = identificatie - 'A'; // A=0 - F=5
-        int rij = productNummer - '1'; // '1'=0 -'9'= 8
+        int rij = productNummer - 1; // '1'=0 -'9'= 8
 
         gegenereerdeCode[i] = $"{identificatie}{productNummer}{kwaliteit}"; //samenvoegen in string
         
@@ -61,7 +61,7 @@ void verwerkCodes() {
         Console.Write(gegenereerdeCode[i] + " " );
         
         // Tel 1 bij op de juiste plek in de juiste tabel afhankelijk van welk product en welke machine gebruikt werd (goed of slecht)
-        if (kwaliteit == '1') goedeTabel[rij, kolom]++;
+        if (kwaliteit == 1 ) goedeTabel[rij, kolom]++;
         
         else slechteTabel[rij, kolom]++;
     }
