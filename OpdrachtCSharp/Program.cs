@@ -3,13 +3,23 @@
 Random random = new Random();
 
 int[,] goedeTabel = new int[9, 6]; // rijen: 9 producten (1–9), kolommen: 6 machines (A–F)
-int[,] slechteTabel = new int[9, 6];  
+int[,] slechteTabel = new int[9, 6];
+
+//Totalen bijhouden tijdens verwerken.
+int[] goedeRijTotalen = new int[9];
+int[] goedeKolomTotalen = new int [6];
+
+int[] slechteRijTotalen = new int [9];
+int[] slechteKolomTotalen = new int [6];
+
+int goedTotaal = 0;
+int slechtTotaal = 0;
 
 string[] gegenereerdeCode = new string[hoeveel];
 
 verwerkCodes();
-PrintTabel("goeie afwerking", goedeTabel);
-PrintTabel("slechte afwerking", slechteTabel);
+PrintTabel("goeie afwerking", goedeTabel,goedeRijTotalen, goedeKolomTotalen,goedTotaal);
+PrintTabel("slechte afwerking", slechteTabel,slechteRijTotalen, slechteKolomTotalen, slechtTotaal);
 
 
 int vraagAantalCodes() {
@@ -43,7 +53,7 @@ int vraagAantalCodes() {
 }
 
 
-
+// Codes genereren /verwerken/ totalen updaten
 void verwerkCodes() {
     for (int i = 0; i < hoeveel; i++)
     {
@@ -57,20 +67,33 @@ void verwerkCodes() {
         gegenereerdeCode[i] = $"{identificatie}{productNummer}{kwaliteit}"; //samenvoegen in string
         
         //Om de 10 codes een nieuwe lijn
-        if (i > 0 && i % 10 == 0) Console.WriteLine();
+        if (i % 10 == 0) Console.WriteLine();
         Console.Write(gegenereerdeCode[i] + " " );
         
-        // Tel 1 bij op de juiste plek in de juiste tabel afhankelijk van welk product en welke machine gebruikt werd (goed of slecht)
-        if (kwaliteit == 1 ) goedeTabel[rij, kolom]++;
-        
-        else slechteTabel[rij, kolom]++;
+        // Update juiste tabel en totalen
+        if (kwaliteit == 1)
+        {
+            goedeTabel[rij, kolom]++;
+            goedeRijTotalen[rij]++;
+            goedeKolomTotalen[kolom]++;
+            goedTotaal++;
+        }
+
+        else
+        {
+            slechteTabel[rij, kolom]++;
+            slechteRijTotalen[rij]++;
+            slechteKolomTotalen[kolom]++;
+            slechtTotaal++;
+        }
     }
     Console.WriteLine();
 }
 
 
 
-void PrintTabel(string titel, int[,] tabel) {
+// Tabel tonen met rijen, kolommen en totalen
+void PrintTabel(string titel, int[,] tabel, int [] rijTotalen, int [] kolomTotalen,int totaal) {
     Console.WriteLine($"\n{titel}");
     Console.Write("   ");
 
@@ -82,35 +105,27 @@ void PrintTabel(string titel, int[,] tabel) {
     Console.WriteLine(" TOT");
 
     
-    //Loop over elke Rij
+    //Loop over elke Rij met productnummer + rijTotaal
     for (int i = 0; i < 9; i++)
     {
         Console.Write($"{i + 1}  "); // Print product number (1–9)
-        int rijTOT = 0;
-        
         
         //Loop over elke Kolom
         for (int j = 0; j < 6; j++)
         {
             Console.Write($" {tabel[i, j]}"); // Print de cell value
-            rijTOT += tabel[i, j]; // Toevoegen aan de row total
         }
 
-        Console.WriteLine($"  {rijTOT}"); //Print de row total at the end
+        Console.WriteLine($"  {rijTotalen[i]}"); //Print de row total at the end
     }
 
-    // Het TOT (kolom totaal + eindtotaal)
+    // KolomTotaal + EindTotaal
     Console.Write("TOT");
-    int totaal = 0;
     
     for (int j = 0; j < 6; j++)
     {
-        int kolomTotaal = 0;
-        
-        // Alle values in kolom toevoegen
-        for (int i = 0; i < 9; i++) kolomTotaal += tabel[i, j];
-        totaal += kolomTotaal;
-        Console.Write($" {kolomTotaal}");
+       
+        Console.Write($" {kolomTotalen[j]}"); // vooraf berekende kolom totalen
     }
 
     Console.WriteLine($"  {totaal}");
