@@ -1,4 +1,4 @@
-﻿int hoeveel = vraagAantalCodes(); // Nummer tussen 20-50 dat we ingeven
+﻿int hoeveel = VraagAantalCodes(); // Nummer tussen 20-50 dat we ingeven
 
 Random random = new Random();
 
@@ -7,12 +7,12 @@ int[,] slechteTabel = new int[10, 7];
 
 string[] gegenereerdeCode = new string[hoeveel];
 
-verwerkCodes();
+VerwerkCodes();
 PrintTabel("goeie afwerking", goedeTabel);
 PrintTabel("slechte afwerking", slechteTabel);
 
 
-int vraagAantalCodes() {
+int VraagAantalCodes() {
     Console.WriteLine("Hoeveel Codes genereren?(20-50): ");
     int hoeveel = 0;
     try
@@ -42,9 +42,16 @@ int vraagAantalCodes() {
     return hoeveel;
 }
 
+void UpdateTabel(int[,] tabel, int rij, int kolom) {
+    tabel[rij, kolom]++;    // waarde op locatie verhogen
+    tabel[rij, 6]++;        // rijtotaal (kolom 6)
+    tabel[9, kolom]++;      // kolomtotaal (rij 9)
+    tabel[9, 6]++;          // eindtotaal
+}
+
 
 // Codes genereren /verwerken/ totalen updaten
-void verwerkCodes() {
+void VerwerkCodes() {
     for (int i = 0; i < hoeveel; i++)
     {
         char identificatie = (char)random.Next('A','G'); // A tot F
@@ -60,21 +67,15 @@ void verwerkCodes() {
         if (i % 10 == 0) Console.WriteLine();
         Console.Write(gegenereerdeCode[i] + " " );
         
-        // Update juiste tabel en totalen
+        
         if (kwaliteit == 1)
         {
-            goedeTabel[rij, kolom]++;
-            goedeTabel[rij, 6]++;     // rijtotaal
-            goedeTabel[9, kolom]++;   // kolomtotaal
-            goedeTabel[9, 6]++;       // eindtotaal
+            UpdateTabel(goedeTabel, rij, kolom);
         }
 
         else
         {
-            slechteTabel[rij, kolom]++;
-            slechteTabel[rij, 6]++;    // rijtotaal
-            slechteTabel[9, kolom]++;  // kolomtotaal
-            slechteTabel[9, 6]++;      // eindtotaal
+           UpdateTabel(slechteTabel, rij, kolom);
         }
     }
     Console.WriteLine();
