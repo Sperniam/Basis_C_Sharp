@@ -5,10 +5,6 @@ Random random = new Random();
 int[,] goedeTabel = new int[10, 7]; // rijen: 9 producten (1–9), kolommen: 6 machines (A–F)
 int[,] slechteTabel = new int[10, 7];
 
-//Totalen bijhouden tijdens verwerken.
-int[] goedeRijTotalen = new int[9];
-int[] goedeKolomTotalen = new int [6];
-
 string[] gegenereerdeCode = new string[hoeveel];
 
 verwerkCodes();
